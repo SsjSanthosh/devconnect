@@ -4,10 +4,9 @@ import "./Navbar.scss";
 import { connect } from "react-redux";
 import { logout } from "./../Redux/Auth/authActions";
 function Navbar(props) {
-  console.log(props.user);
   const guestLinks = (
     <div className="Navbar">
-      <Link to="/">
+      <Link className="optional" to="/">
         <span>Home</span>{" "}
       </Link>
       <Link to="/register">
@@ -18,14 +17,14 @@ function Navbar(props) {
         <span>Login</span>
       </Link>
       <Link to="/profiles">
-        <span>Our users</span>
+        <span>Profiles</span>
       </Link>
     </div>
   );
 
   const authLinks = (
     <div className="Navbar">
-      <Link to="/">
+      <Link className="optional" to="/">
         <span>Home </span>
       </Link>
       <Link to="/dashboard">
@@ -34,7 +33,7 @@ function Navbar(props) {
       <Link to="/profiles">
         <span>Our users</span>
       </Link>
-      <Link to="/posts">
+      <Link className="optional" to="/posts">
         <span>Posts</span>
       </Link>
       <Link to="/" onClick={props.logout}>

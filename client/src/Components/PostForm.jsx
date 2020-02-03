@@ -21,8 +21,12 @@ function PostForm({ addPost }) {
           placeholder="Penny for your thoughts?"
           value={postText}
           onChange={e => setText(e.target.value)}
+          className="mb-3"
         ></textarea>{" "}
-        <button className="btn">Submit post</button>
+        <div className="stub">
+          {" "}
+          <button className="btn">Submit post</button>
+        </div>
       </form>
     </div>
   );

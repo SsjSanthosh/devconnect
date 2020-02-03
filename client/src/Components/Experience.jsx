@@ -2,11 +2,11 @@ import React from "react";
 import Moment from "react-moment";
 import { deleteExperience } from "./../Redux/Profile/profileActions";
 import { connect } from "react-redux";
-function Experience({ profile, deleteExperience }) {
+function Experience({ profile, deleteExperience, user }) {
   const render = profile
     ? profile.experience.map(exp => {
         return (
-          <div className="experience">
+          <div className="experience" key={exp._id}>
             <div className="experience-deets">
               Title - <span className="golden">{exp.title}</span>{" "}
             </div>
@@ -33,15 +33,16 @@ function Experience({ profile, deleteExperience }) {
               </span>
             </div>
             {exp.description && <div>Job description - {exp.description}</div>}
-            <button
-              className="btn"
-              onClick={() => {
-                console.log("clicked");
-                deleteExperience(exp._id);
-              }}
-            >
-              Delete experience
-            </button>
+            {user._id == profile.user._id && (
+              <button
+                className="btn"
+                onClick={() => {
+                  deleteExperience(exp._id);
+                }}
+              >
+                Delete experience
+              </button>
+            )}
           </div>
         );
       })
@@ -49,4 +50,12 @@ function Experience({ profile, deleteExperience }) {
   return <div>{render}</div>;
 }
 
-export default connect(null, { deleteExperience })(Experience);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    loading: state.profile.loading,
+    profile: state.profile.profile,
+    user: state.auth.user
+  };
+};
+export default connect(mapStateToProps, { deleteExperience })(Experience);

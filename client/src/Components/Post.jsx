@@ -43,7 +43,7 @@ function Post({ post, addComment, removeComment, match, getPost, user }) {
           post.comments &&
           post.comments.map(comment => {
             return (
-              <div className="comment reg-title">
+              <div className="comment reg-title" key={comment._id}>
                 <img src={comment.avatar} alt="avatar" width="80" height="80" />
 
                 <div className="comment-desc">

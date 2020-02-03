@@ -2,11 +2,11 @@ import React from "react";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { deleteEducation } from "./../Redux/Profile/profileActions";
-function Education({ profile, deleteEducation }) {
+function Education({ profile, deleteEducation, user }) {
   const render = profile
     ? profile.education.map(edu => {
         return (
-          <div className="education">
+          <div className="education" key={edu._id}>
             <div className="education-deets">
               School / University <span className="golden"> {edu.school} </span>
             </div>
@@ -30,15 +30,28 @@ function Education({ profile, deleteEducation }) {
                 )}
               </div>
             </div>
-            <button className="btn" onClick={() => deleteEducation(edu._id)}>
-              {" "}
-              Delete this education{" "}
-            </button>
+            {user._id == profile.user._id && (
+              <button
+                className="btn"
+                onClick={() => {
+                  deleteEducation(edu._id);
+                }}
+              >
+                Delete education
+              </button>
+            )}
           </div>
         );
       })
     : null;
   return <div>{render}</div>;
 }
-
-export default connect(null, { deleteEducation })(Education);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    loading: state.profile.loading,
+    profile: state.profile.profile,
+    user: state.auth.user
+  };
+};
+export default connect(mapStateToProps, { deleteEducation })(Education);

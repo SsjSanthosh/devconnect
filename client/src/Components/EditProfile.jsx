@@ -76,10 +76,9 @@ function EditProfile(props) {
   };
   return (
     <div className="createprof-container">
-      <h1 className="large reg-title">Create Your Profile</h1>
+      <h1 className="large reg-title">Edit Your Profile</h1>
       <p className="lead golden">
-        <i className="fas fa-user"></i> Let's get some information to make your
-        profile stand out
+        <i className="fas fa-user"></i> Change up your profile!
       </p>
       <small className="golden">* = required field</small>
       <form className="form " onSubmit={handleSubmit}>

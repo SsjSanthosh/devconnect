@@ -9,11 +9,6 @@ function PostItem({ posts, user, addLike, removeLike, deletePost }) {
         <div className="post-bifurc">
           <div className="post-left">
             <img src={post.avatar} width={80} height={80} alt="avatar" />
-            {post.user === user && (
-              <button className="btn" onClick={() => deletePost(post._id)}>
-                Delete
-              </button>
-            )}
           </div>
           <div className="post-desc">
             <p className="golden">{post.name}</p>
@@ -54,6 +49,11 @@ function PostItem({ posts, user, addLike, removeLike, deletePost }) {
               <Link className="golden" to={`/posts/${post._id}`}>
                 See full post
               </Link>
+              {post.user === user && (
+                <button className="btn" onClick={() => deletePost(post._id)}>
+                  Delete
+                </button>
+              )}
             </p>
           </div>
         </div>

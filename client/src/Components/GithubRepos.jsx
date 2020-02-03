@@ -2,19 +2,33 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getRepos } from "./../Redux/Profile/profileActions";
 import uniqid from "uniqid";
-function GithubRepos(props) {
-  const { getRepos, username } = props;
+function GithubRepos({ getRepos, username, repos }) {
   useEffect(() => {
     getRepos(username);
   }, [getRepos, username]);
   const render =
-    props.repos != null
-      ? props.repos.map(repo => {
-          return <div key={uniqid()}>{repo.name}</div>;
+    repos != null
+      ? repos.map(repo => {
+          return (
+            <div key={uniqid()} className="repo">
+              <a href={repo.html_url} alt="link">
+                <span className="repo-name">{repo.name}</span>
+              </a>
+              {/* 
+              {repo.homepage && (
+                <a className="repo-site" href={repo.homepage}>
+                  Deployed website
+                </a>
+              )} */}
+              <span className="repo-stars">
+                <span className="golden">{repo.stargazers_count}</span> stars
+              </span>
+            </div>
+          );
         })
       : null;
 
-  return <div>{render}</div>;
+  return <div className="userprofile-container reg-title">{render}</div>;
 }
 
 const mapStateToProps = state => {
