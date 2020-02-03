@@ -1,0 +1,346 @@
+:root {
+  --primary-bg: #272f42;
+}
+body {
+  background-color: var(--primary-bg);
+  height: 100vh;
+  width: 100vw;
+  z-index: -20;
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  color: white;
+  padding: 0.5rem 2rem;
+  &:hover {
+    border: none;
+    text-decoration: none;
+  }
+}
+
+button.btn,
+input.btn,
+a.btn {
+  background-color: #fff;
+  border: none;
+  margin: 1rem;
+  border: 1px solid goldenrod;
+  color: #272f42;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: goldenrod;
+    color: white;
+    border: 1px solid var(--primary-bg);
+  }
+}
+.genlink {
+  color: white;
+  padding: 1rem 1rem;
+  &:hover {
+    color: goldenrod;
+
+    border-bottom: 3px solid goldenrod;
+  }
+}
+.Navbar {
+  font-family: "Raleway", sans-serif;
+  height: 60px;
+  z-index: 19;
+  width: 60%;
+  font-size: 17px;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+  justify-content: space-evenly;
+  > a:hover {
+    color: goldenrod;
+    border-bottom: goldenrod solid 2px;
+  }
+}
+
+.landing-container {
+  height: 100%;
+  width: 100vw;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .landing-title {
+    margin-top: -3rem;
+    z-index: 12;
+    &-text {
+      padding: 0 2rem;
+      border: 5px solid transparent;
+      border-bottom: 5px solid goldenrod;
+      @media screen and (max-width: 920px) {
+        border: 3px solid transparent;
+        border-bottom: 3px solid goldenrod;
+      }
+      @media screen and (max-width: 600px) {
+        border: 2px solid transparent;
+        border-bottom: 2px solid goldenrod;
+      }
+      transition: border 4s;
+      &:hover {
+        border: 5px solid goldenrod;
+        @media screen and (max-width: 920px) {
+          border: 3px solid transparent;
+          border-bottom: 3px solid goldenrod;
+        }
+        @media screen and (max-width: 600px) {
+          border: 2px solid transparent;
+          border-bottom: 2px solid goldenrod;
+        }
+      }
+    }
+
+    font-family: "Raleway", sans-serif;
+    letter-spacing: 15px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 920px) {
+      font-size: 30px;
+      letter-spacing: 10px;
+    }
+    @media screen and (max-width: 600px) {
+      font-size: 25px;
+      letter-spacing: 6px;
+    }
+    font-size: 50px;
+    color: white;
+    .landing-subtitle {
+      margin-top: 2rem;
+      font-size: 20px;
+      text-align: center;
+      @media screen and (max-width: 920px) {
+        font-size: 14px;
+      }
+      letter-spacing: 5px;
+    }
+  }
+}
+
+.reg-title {
+  color: white;
+}
+.reg-form {
+  color: rgb(192, 154, 59);
+  > label {
+    font-size: 15px;
+  }
+  > input {
+    background-color: white;
+    color: black;
+    font-family: "Raleway", sans-serif;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.dashboard-user {
+  color: goldenrod;
+}
+.dashboard-container,
+.createprof-container,
+.education-container,
+.experience-container,
+.posts-container {
+  width: 70%;
+  margin: auto;
+}
+.dashboard-container {
+  color: white;
+
+  .dashboard-welcome {
+    font-size: 30px;
+    font-family: "Raleway", sans-serif;
+    .dashboard-user {
+      color: goldenrod;
+    }
+  }
+  .dashboard-noprof {
+    display: flex;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    .createprofbtn {
+      font-size: 15px;
+      padding: 7px;
+      border: 0;
+    }
+  }
+}
+
+.createprof-container {
+  text-align: center;
+  .reg-form > input,
+  .reg-form > select,
+  .reg-form > textarea {
+    width: 400px;
+    padding: 6px;
+  }
+  .social-input {
+    > input {
+      width: 360px;
+    }
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin: 1rem auto;
+  }
+}
+
+.missingdeets {
+  padding: 1em;
+  margin: 1em;
+  font-size: 17px;
+}
+
+.profile-container {
+  width: 70%;
+  margin: auto;
+
+  text-align: center;
+  .profile {
+    width: 500px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+    .profile-name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      > span {
+        font-size: 20px;
+        padding: 1em;
+      }
+    }
+  }
+}
+
+.avatar-container {
+  height: 100px;
+  width: 100px;
+  // border: 2px solid goldenrod; //   border: 2px solid goldenrod;
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.education-container,
+.experience-container {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .reg-form {
+    > input {
+      width: 400px;
+      padding: 0.4em;
+    }
+  }
+}
+.golden {
+  color: goldenrod;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+}
+.dashboard-exp-edu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.utc {
+  text-align: center;
+}
+.education,
+.experience {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  > .education-deets,
+  .experience-deets {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+  }
+}
+
+.profile-container {
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    .avatar-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .profile {
+      padding: 0.5rem 0;
+      width: 250px;
+      border: 1px solid goldenrod;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.post-text-container {
+  width: 600px;
+  > button {
+    margin: 0;
+  }
+  margin: auto;
+  > textarea {
+    resize: none;
+  }
+}
+
+.post-mapper-div,
+.comment-div {
+  // display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .post {
+    max-width: 500px;
+    .post-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .post-bifurc {
+      display: flex;
+      .post-desc {
+        padding: 0 2rem;
+      }
+    }
+  }
+}
+
+.comment {
+  > button {
+    margin: 0;
+  }
+  display: flex;
+  .comment-desc {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://dex:super2409@cluster0-l8xrn.mongodb.net/devconnect?retryWrites=true&w=majority",
+  "jwtSecret": "truebelievers",
+  "githubClientId": "9279899567e984e635d7",
+  "githubClientSecret": "44e3f802a7b5f509d75d060049a71f8d198c0139"
+}
