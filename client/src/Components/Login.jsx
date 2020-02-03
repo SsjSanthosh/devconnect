@@ -29,7 +29,7 @@ export function Login(props) {
       <p className="h4 text-center reg-title">
         Login to your existing account to have access to your profile and posts!
       </p>
-      <form className="form-container " onSubmit={handleSubmit}>
+      <form className="register-container " onSubmit={handleSubmit}>
         <div className="form-group my-3 reg-form">
           <label htmlFor="email">Email</label>
           <input

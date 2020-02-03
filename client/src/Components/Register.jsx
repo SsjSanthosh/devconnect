@@ -36,10 +36,10 @@ function Register(props) {
   }
   return (
     <>
-      <p className="h4 text-center reg-title">
+      <p className=" text-center reg-title">
         Register with our site to access all posts and connect to other devs!
       </p>
-      <form className="form-container " onSubmit={handleSubmit}>
+      <form className="register-container" onSubmit={handleSubmit}>
         <div className="form-group my-3 reg-form">
           <label htmlFor="name">Name</label>
           <input
