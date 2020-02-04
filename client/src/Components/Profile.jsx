@@ -76,7 +76,7 @@ function Profile({ match, profile, authUser, getProfileByUserID }) {
                 <Experience profile={profile.profile} />
               </div>
             ) : (
-              <div className="missingdeets">
+              <div className="missingdeets reg-title">
                 You have not added any previous professional experiences.
               </div>
             )}
@@ -88,7 +88,7 @@ function Profile({ match, profile, authUser, getProfileByUserID }) {
                 <Education profile={profile.profile} />{" "}
               </div>
             ) : (
-              <div className="missingdeets">
+              <div className="missingdeets reg-title">
                 You have not added any Education.
               </div>
             )}
