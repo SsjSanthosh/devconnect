@@ -8,7 +8,7 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator");
 
 // @route  POSTS api/users
-// @desc   Test route
+// @desc   Create a user
 // @access Public
 
 router.post(
@@ -82,7 +82,7 @@ router.post(
           jwt.sign(
             payload,
             config.get("jwtSecret"),
-            { expiresIn: 36000 },
+            { expiresIn: 3600 },
             (err, token) => {
               if (err) {
                 res.status(500).json({ status: "failed", message: "JWT fail" });

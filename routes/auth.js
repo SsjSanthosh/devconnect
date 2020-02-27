@@ -62,7 +62,7 @@ router.post(
           return res.status(404).json({ message: "Invalid credentials" });
         }
         // return JSON web token
-        console.log("hitting auth login route");
+
         const payload = {
           user: {
             id: user.id

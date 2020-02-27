@@ -40,33 +40,33 @@ function App() {
             <PrivateRoute
               exact
               path="/dashboard"
-              component={Dashboard}
+              Component={Dashboard}
             ></PrivateRoute>
             <PrivateRoute
               exact
               path="/create-profile"
-              component={CreateProfile}
+              Component={CreateProfile}
             ></PrivateRoute>
             <PrivateRoute
               exact
               path="/edit-profile"
-              component={EditProfile}
+              Component={EditProfile}
             ></PrivateRoute>
             <PrivateRoute
               exact
               path="/add-experience"
-              component={AddExperience}
+              Component={AddExperience}
             ></PrivateRoute>
             <PrivateRoute
               exact
               path="/add-education"
-              component={AddEducation}
+              Component={AddEducation}
             ></PrivateRoute>
-            <PrivateRoute exact path="/posts" component={Posts}></PrivateRoute>
+            <PrivateRoute exact path="/posts" Component={Posts}></PrivateRoute>
             <PrivateRoute
               exact
               path="/posts/:id"
-              component={Post}
+              Component={Post}
             ></PrivateRoute>
             <Route exact path="/profiles" component={Profiles}></Route>
             <Route exact path="/profile/:userid" component={Profile} />

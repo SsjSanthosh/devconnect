@@ -205,7 +205,7 @@ function CreateProfile(props) {
           </>
         ) : null}
         <input type="submit" className="btn btn-primary mx-5 mb-4" />
-        <a className="btn btn-light mx-5 mb-4" href="dashboard.html">
+        <a className="btn btn-light mx-5 mb-4" href="dashboard">
           Go Back
         </a>
       </form>
