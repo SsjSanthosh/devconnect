@@ -10,13 +10,12 @@ const router = express.Router();
 const getUserThroughId = async (req, res) => {
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id
+      user: req.params.user_id,
     }).populate("user", ["name", "avatar"]);
     if (!profile) {
       return res.status(400).json({ msg: "NO profile found" });
     }
     res.json(profile);
-    console.log("hitting");
   } catch (err) {
     res.status(500).json({ msg: "failed to get profiles" });
   }
@@ -34,7 +33,7 @@ const getAllProfiles = async (req, res) => {
 const getCurrentUserProfile = async (req, res) => {
   try {
     const profile = await Profile.findOne({
-      user: req.user.id
+      user: req.user.id,
     }).populate("user", ["name", "avatar"]);
     if (!profile) {
       return res.status(400).json({ msg: "NOT FOUND" });
@@ -72,7 +71,7 @@ const addProfileExperience = async (req, res) => {
     from,
     to,
     current,
-    description
+    description,
   };
   try {
     const profile = await Profile.findOne({ user: req.user.id });
@@ -89,9 +88,8 @@ const deleteProfileExperience = async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
 
     const index = profile.experience
-      .map(exp => exp.id)
+      .map((exp) => exp.id)
       .indexOf(req.params.exp_id);
-    console.log("index is ", index);
     profile.experience.splice(index, 1);
     await profile.save();
     res.json(profile);
@@ -113,7 +111,7 @@ const addProfileEducation = async (req, res) => {
     fieldofstudy,
     from,
     to,
-    current
+    current,
   } = req.body;
 
   const newEdu = {
@@ -124,7 +122,7 @@ const addProfileEducation = async (req, res) => {
     cgpa,
     from,
     to,
-    current
+    current,
   };
   try {
     const profile = await Profile.findOne({ user: req.user.id });
@@ -144,9 +142,8 @@ const deleteProfileEducation = async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
 
     const index = profile.education
-      .map(exp => exp.id)
+      .map((exp) => exp.id)
       .indexOf(req.params.edu_id);
-    console.log("index is ", index);
     profile.education.splice(index, 1);
     await profile.save();
     res.json(profile);
@@ -164,7 +161,7 @@ const getGithubRepos = async (req, res) => {
         "githubClientId"
       )}&client_secret=${config.get("githubClientSecret")}`,
       method: "GET",
-      headers: { "user-agent": "node.js" }
+      headers: { "user-agent": "node.js" },
     };
     request(options, (err, response, body) => {
       if (err) console.error(error);
@@ -197,7 +194,7 @@ const createAndUpdateProfile = async (req, res) => {
     company,
     title,
     website,
-    location
+    location,
   } = req.body;
 
   // build profile fields
@@ -211,7 +208,7 @@ const createAndUpdateProfile = async (req, res) => {
   if (status) profileFields.status = status;
   if (title) profileFields.title = title;
   if (skills) {
-    profileFields.skills = skills.split(",").map(skill => skill.trim());
+    profileFields.skills = skills.split(",").map((skill) => skill.trim());
   }
   profileFields.social = {};
   if (facebook) profileFields.social.facebook = facebook;
@@ -248,5 +245,5 @@ module.exports = {
   deleteProfileEducation,
   deleteProfileExperience,
   deleteProfileWithUser,
-  createAndUpdateProfile
+  createAndUpdateProfile,
 };

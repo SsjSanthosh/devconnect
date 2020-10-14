@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
+import { withRouter } from "react-router-dom";
 import {
   addComment,
   removeComment,
-  getPost
+  getPost,
 } from "./../Redux/Posts/postActions";
 function Post({ post, addComment, removeComment, match, getPost, user }) {
   const [text, setText] = useState("");
@@ -18,9 +20,10 @@ function Post({ post, addComment, removeComment, match, getPost, user }) {
         <p>{post.name}</p>
       </div>
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           addComment({ text }, match.params.id);
+          getPost(match.params.id);
           setText("");
         }}
         className="post-text-container "
@@ -32,7 +35,7 @@ function Post({ post, addComment, removeComment, match, getPost, user }) {
           rows="2"
           placeholder="Penny for your thoughts?"
           value={text}
-          onChange={e => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         ></textarea>{" "}
         <br />
         <button className="btn">Submit</button>
@@ -41,7 +44,7 @@ function Post({ post, addComment, removeComment, match, getPost, user }) {
       <div className="comment-div">
         {post != null &&
           post.comments &&
-          post.comments.map(comment => {
+          post.comments.map((comment) => {
             return (
               <div className="comment reg-title" key={comment._id}>
                 <img src={comment.avatar} alt="avatar" width="80" height="80" />
@@ -68,12 +71,12 @@ function Post({ post, addComment, removeComment, match, getPost, user }) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     post: state.post.post,
-    user: state.auth.user._id
+    user: state.auth.user._id,
   };
 };
-export default connect(mapStateToProps, { addComment, removeComment, getPost })(
-  Post
+export default withRouter(
+  connect(mapStateToProps, { addComment, removeComment, getPost })(Post)
 );

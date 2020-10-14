@@ -7,16 +7,16 @@ export function Login(props) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const { email, password } = formData;
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     props.loginAuth({ email, password });
@@ -39,7 +39,7 @@ export function Login(props) {
             id="regemail"
             value={email}
             placeholder="Enter your email"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -52,7 +52,7 @@ export function Login(props) {
             value={password}
             id="regpassword"
             placeholder="Enter your password"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -66,9 +66,9 @@ export function Login(props) {
     </>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 export default connect(mapStateToProps, { loginAuth })(Login);
