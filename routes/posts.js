@@ -17,9 +17,8 @@ router.post("/", [auth], async (req, res) => {
       name: user.name,
       text: req.body.postText,
       avatar: user.avatar,
-      user: req.user.id
+      user: req.user.id,
     });
-    console.log(req.body);
     const post = await newPost.save();
     res.json(post);
   } catch (err) {
@@ -82,7 +81,8 @@ router.put("/like/:post_id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id);
     if (
-      post.likes.filter(like => like.user.toString() == req.user.id).length > 0
+      post.likes.filter((like) => like.user.toString() == req.user.id).length >
+      0
     ) {
       res.status(400).json({ msg: "Post already liked by the user" });
     } else {
@@ -103,7 +103,9 @@ router.put("/unlike/:post_id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.post_id);
 
-    post.likes = post.likes.filter(like => like.user.toString() != req.user.id);
+    post.likes = post.likes.filter(
+      (like) => like.user.toString() != req.user.id
+    );
     await post.save();
     res.json(post.likes);
   } catch (err) {
@@ -117,14 +119,7 @@ router.put("/unlike/:post_id", auth, async (req, res) => {
 
 router.post(
   "/comments/:post_id",
-  [
-    auth,
-    [
-      check("text", "Comment requires text")
-        .not()
-        .isEmpty()
-    ]
-  ],
+  [auth, [check("text", "Comment requires text").not().isEmpty()]],
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -138,7 +133,7 @@ router.post(
         user: req.user.id,
         name: user.name,
         avatar: user.avatar,
-        text: req.body.text
+        text: req.body.text,
       };
 
       post.comments.push(newComment);
@@ -161,7 +156,7 @@ router.delete("/comments/:post_id/:comment_id", auth, async (req, res) => {
     const post = await Post.findById(req.params.post_id);
 
     const comment = post.comments.find(
-      comment => comment.id == req.params.comment_id
+      (comment) => comment.id == req.params.comment_id
     );
 
     if (!comment) {
@@ -172,7 +167,7 @@ router.delete("/comments/:post_id/:comment_id", auth, async (req, res) => {
       return res.status(401).json({ msg: "Unauthorized cannot delete" });
     }
 
-    const users = post.comments.map(comment => comment.user.toString());
+    const users = post.comments.map((comment) => comment.user.toString());
 
     const index = users.indexOf(req.params.comment_id);
 

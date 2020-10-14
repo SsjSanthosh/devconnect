@@ -9,25 +9,23 @@ const app = express();
 // body-parser
 app.use(express.json({ extended: false }));
 // Router for the users route
-app.use("/users", userRouter);
+app.use("/api/users", userRouter);
 
 // Router for the posts route
-app.use("/posts", postsRouter);
+app.use("/api/posts", postsRouter);
 
 // Router for the profile route
-app.use("/profile", profileRouter);
+app.use("/api/profile", profileRouter);
 
 // Router for the auth route
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 // serve static assets in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("./client/build"));
 
-  app.get("*", (req, res) => {
-    const loc = path.join(__dirname, "client", "build", "index.html");
-    res.sendFile(loc);
-    console.log(loc);
-  });
-}
+app.use(express.static("./client/build"));
+
+app.get("*", (req, res) => {
+  const loc = path.join(__dirname, "client", "build", "index.html");
+  res.sendFile(loc);
+});
 module.exports = app;

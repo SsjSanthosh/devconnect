@@ -12,16 +12,16 @@ function Register(props) {
     email: "",
     password: "",
     confirmPassword: "",
-    name: ""
+    name: "",
   });
 
   const { name, email, password, confirmPassword } = formData;
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       props.setAlert("Passwords dont match", "crimson");
@@ -29,7 +29,6 @@ function Register(props) {
     } else {
       props.regAuth({ name, email, password });
     }
-    console.log();
   };
   if (props.isAuthenticated) {
     return <Redirect to="/dashboard" />;
@@ -49,7 +48,7 @@ function Register(props) {
             id="regname"
             value={name}
             placeholder="Enter your name"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -62,7 +61,7 @@ function Register(props) {
             id="regemail"
             value={email}
             placeholder="Enter your email"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -75,7 +74,7 @@ function Register(props) {
             value={password}
             id="regpassword"
             placeholder="Enter your password"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -88,7 +87,7 @@ function Register(props) {
             value={confirmPassword}
             id="regconfpassword"
             placeholder="Enter your password again"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             required
           />
         </div>
@@ -101,9 +100,9 @@ function Register(props) {
     </>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 export default connect(mapStateToProps, { setAlert, regAuth, loadUser })(
