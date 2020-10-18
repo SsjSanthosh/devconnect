@@ -40,26 +40,27 @@ I built this to be able to get familiar with node and the backend. The backend d
 ![Landing page](https://raw.githubusercontent.com/SsjSanthosh/devconnect/master/screenshots/landing.png)
 _Landing Page_
 
-<!-- _[Dashboard](https://raw.githubusercontent.com/SsjSanthosh/devconnect/master/screenshots/User.png) -->
+![Dashboard](https://raw.githubusercontent.com/SsjSanthosh/devconnect/master/screenshots/User%20dashboard.png)
+_User Dashboard_
+
+![Posts](https://raw.githubusercontent.com/SsjSanthosh/devconnect/master/screenshots/User%2posts.png)
+_User Posts_
+
+![Profile](https://raw.githubusercontent.com/SsjSanthosh/devconnect/master/screenshots/User%20profile.png)
+_User Profile_
 
 ## Installation
 
-Clone down this repository.
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
 
-- Create a virtual environment
-- Pip install everything in the requirements.txt
+- `npm install`
 
-To Start Server:
+To start server:
 
-`python manage.py runserver`
+- `npm start`
 
 To Visit App:
 
 `localhost:8000/`
-
-## Possible Future Updates
-
-- Add more filters, better routes
-- Add more information regarding the game
